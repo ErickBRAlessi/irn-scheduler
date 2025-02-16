@@ -4,6 +4,14 @@ This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
 If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.
 
+## Deploy to docker-hub
+mvn clean package
+docker build -f src/main/docker/Dockerfile.jvm -t quarkus/irn-scheduler-jvm .
+test ->  docker run --env-file .env -i quarkus/irn-scheduler-jvm
+docker login
+docker tag quarkus/irn-scheduler-jvm erickbralessi/irn-fetcher:1.0.0
+docker push erickbralessi/irn-fetcher:1.0.0
+
 ## Running the application in dev mode
 
 You can run your application in dev mode that enables live coding using:
